@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="ru" data-lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Дарья Цуканова — резюме</title>
+<meta name="description" content="Дарья Цуканова — стажёр финансово-экономического направления: финансовый анализ, управление рисками, экономическая безопасность.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: a bright "financial report" told as a magazine — wine-red, cobalt and dandelion yellow
+   blocks on paper white, ticker tapes and risk-map grids as the recurring motif. Single theme by choice. */
+:root{
+  --paper:#F7F6F2;
+  --ink:#16131A;
+  --wine:#B0122F;
+  --cobalt:#2B3FF0;
+  --sun:#FFD43B;
+  --mist:#E7E4EE;
+  --muted:#5C5763;
+  --display:"Unbounded", "Arial Black", system-ui, sans-serif;
+  --body:"Manrope", "Segoe UI", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+  --r:22px;
+  --gut:clamp(16px,4vw,56px);
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html,body{overflow-x:clip}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+:focus-visible{outline:3px solid var(--cobalt);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--display);line-height:1.02;text-wrap:balance;letter-spacing:-.02em}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--gut)}
+.mono{font-family:var(--mono)}
+.tab{font-variant-numeric:tabular-nums}
+
+/* progress */
+.progress{position:fixed;inset:0 0 auto 0;height:4px;z-index:60;background:linear-gradient(90deg,var(--wine),var(--cobalt),var(--sun));transform-origin:0 50%;transform:scaleX(0)}
+@supports (animation-timeline: scroll()){
+  .progress{animation:grow linear both;animation-timeline:scroll(root)}
+  @keyframes grow{to{transform:scaleX(1)}}
+}
+
+/* header */
+header{position:sticky;top:0;z-index:50;transition:background .3s, box-shadow .3s}
+header.scrolled{background:color-mix(in srgb,var(--paper) 86%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(22,19,26,.08)}
+.nav{display:flex;align-items:center;gap:18px;height:68px}
+.logo{font-family:var(--display);font-weight:900;font-size:18px;text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo i{width:34px;height:34px;border-radius:50%;background:var(--wine);color:var(--paper);display:grid;place-items:center;font-style:normal;font-size:13px;letter-spacing:0}
+.links{display:flex;gap:4px;margin-left:auto}
+.links a{text-decoration:none;font-weight:600;font-size:14px;padding:8px 12px;border-radius:99px;transition:background .2s,color .2s}
+.links a:hover,.links a.on{background:var(--ink);color:var(--paper)}
+.lang{display:flex;border:2px solid var(--ink);border-radius:99px;padding:3px;gap:2px;flex-shrink:0}
+.lang button{font-family:var(--mono);font-weight:700;font-size:12px;padding:5px 10px;border-radius:99px;transition:.2s}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--sun)}
+@media (max-width:860px){.links{display:none}.lang{margin-left:auto}}
+
+/* hero */
+.hero{position:relative;padding:clamp(24px,5vw,56px) 0 clamp(40px,6vw,80px)}
+.hero-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:clamp(24px,4vw,64px);align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:8px 14px;border-radius:99px}
+.eyebrow b{width:8px;height:8px;border-radius:50%;background:#3BE07A;box-shadow:0 0 0 0 #3BE07A;animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 10px rgba(59,224,122,0)}100%{box-shadow:0 0 0 0 rgba(59,224,122,0)}}
+.name{font-size:clamp(46px,9.4vw,132px);font-weight:900;margin:22px 0 18px;text-transform:uppercase;line-height:.92}
+.name .line{display:block;overflow:hidden;padding-bottom:.04em}
+.name .line span{display:inline-block;animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.name .line:nth-child(2) span{animation-delay:.12s;color:var(--wine)}
+.name .line:nth-child(2){-webkit-text-stroke:0}
+@keyframes rise{from{transform:translateY(105%)}to{transform:none}}
+.lead{font-size:clamp(18px,2vw,22px);max-width:34ch;font-weight:500}
+.lead mark{background:linear-gradient(transparent 58%,var(--sun) 58%);color:inherit;padding:0 2px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 24px;border-radius:99px;font-weight:800;text-decoration:none;font-size:16px;transition:transform .25s cubic-bezier(.2,.8,.2,1),background .2s,color .2s;will-change:transform}
+.btn.solid{background:var(--wine);color:#fff}
+.btn.solid:hover{background:var(--ink)}
+.btn.ghost{border:2px solid var(--ink)}
+.btn.ghost:hover{background:var(--sun)}
+.btn svg{width:18px;height:18px;transition:transform .25s}
+.btn:hover svg{transform:translateX(4px)}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:28px;font-size:14px;color:var(--muted);font-weight:600}
+.meta-row span{display:flex;align-items:center;gap:6px}
+
+.portrait{position:relative;justify-self:center;width:min(100%,430px)}
+.arch{border-radius:999px 999px var(--r) var(--r);overflow:hidden;aspect-ratio:3/4.1;background:var(--wine);position:relative;animation:pop 1s .15s cubic-bezier(.2,.8,.2,1) both;box-shadow:16px 16px 0 var(--ink)}
+.arch img{width:100%;height:100%;object-fit:cover;object-position:50% 18%;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.portrait:hover .arch img{transform:scale(1.05)}
+@keyframes pop{from{transform:translateY(30px) scale(.96);opacity:.2}to{transform:none;opacity:1}}
+.badge{position:absolute;width:132px;height:132px;left:-46px;bottom:56px;background:var(--sun);border-radius:50%;display:grid;place-items:center;border:2px solid var(--ink);z-index:2}
+.badge svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 16s linear infinite}
+.badge text{font-family:var(--mono);font-size:10.4px;font-weight:700;letter-spacing:.08em;fill:var(--ink)}
+.badge .core{font-family:var(--display);font-weight:900;font-size:24px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.chip{position:absolute;z-index:2;font-family:var(--mono);font-weight:700;font-size:13px;padding:9px 14px;border-radius:12px;border:2px solid var(--ink);background:var(--paper);display:flex;gap:8px;align-items:center;animation:float 5s ease-in-out infinite}
+.chip.c1{top:18%;right:-26px}
+.chip.c2{top:52%;right:-40px;background:var(--cobalt);color:#fff;border-color:var(--cobalt);animation-delay:-1.6s}
+.chip.c3{top:-6px;left:10%;background:var(--ink);color:var(--sun);animation-delay:-3s}
+.chip .up{color:#18A957}
+.chip.c2 .up{color:var(--sun)}
+@keyframes float{50%{transform:translateY(-10px) rotate(-2deg)}}
+.spark{position:absolute;left:0;width:100%;bottom:-10px;height:160px;pointer-events:none;z-index:-1;opacity:.9}
+.spark path{fill:none;stroke:var(--cobalt);stroke-width:3;stroke-linecap:round;stroke-dasharray:1600;stroke-dashoffset:0;animation:draw 2.6s .4s ease-out both}
+.spark .area{fill:url(#g1);stroke:none;animation:fade 1.5s 1.4s both}
+@keyframes draw{from{stroke-dashoffset:1600}}
+@keyframes fade{from{opacity:0}}
+@media (max-width:860px){
+  .hero-grid{grid-template-columns:1fr}
+  .portrait{width:min(78%,360px);margin-top:12px}
+  .badge{width:104px;height:104px;left:-34px;bottom:36px}
+  .badge text{font-size:8.6px}.badge .core{font-size:19px}
+  .chip{font-size:11.5px;padding:7px 10px}
+  .chip.c1{right:-18px}.chip.c2{right:-24px}
+}
+
+/* ticker */
+.ticker{background:var(--sun);border-block:2px solid var(--ink);overflow:hidden;transform:rotate(-1.6deg);margin:10px -20px 0;position:relative;z-index:3}
+.ticker.alt{background:var(--ink);color:var(--paper);transform:rotate(1.2deg);margin-top:-14px;z-index:2}
+.track{display:flex;width:max-content;animation:marquee 38s linear infinite}
+.ticker.alt .track{animation-direction:reverse;animation-duration:46s}
+.track span{font-family:var(--mono);font-weight:700;font-size:clamp(14px,1.6vw,18px);padding:14px 22px;white-space:nowrap;display:flex;gap:10px;align-items:center}
+.track span em{font-style:normal;color:#0E8A45}
+.ticker.alt .track span em{color:var(--sun)}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* sections */
+section{padding:clamp(64px,9vw,120px) 0;position:relative}
+.sec-head{display:flex;align-items:end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,48px)}
+.kicker{font-family:var(--mono);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--wine);display:flex;gap:10px;align-items:center;margin-bottom:12px}
+.kicker::before{content:"";width:28px;height:2px;background:currentColor}
+h2{font-size:clamp(34px,5.6vw,72px);font-weight:900;text-transform:uppercase}
+h2 .o{color:transparent;-webkit-text-stroke:2px var(--ink)}
+.sec-note{max-width:38ch;color:var(--muted);font-weight:500}
+
+/* reveal (visible at rest; scroll-driven polish where supported) */
+@supports (animation-timeline: view()){
+  .rv{animation:rv linear both;animation-timeline:view();animation-range:entry 0% entry 55%}
+  @keyframes rv{from{opacity:.15;transform:translateY(48px) scale(.98)}to{opacity:1;transform:none}}
+}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,4vw,56px);align-items:start}
+.photo-card{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/4.5;border:2px solid var(--ink)}
+.photo-card img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.photo-card .tag{position:absolute;left:14px;bottom:14px;background:var(--paper);border:2px solid var(--ink);border-radius:12px;padding:8px 12px;font-weight:700;font-size:14px;display:flex;gap:8px;align-items:center}
+.about-text p{font-size:clamp(17px,1.6vw,19px);max-width:62ch}
+.about-text p+p{margin-top:14px}
+.goal{margin-top:26px;background:var(--cobalt);color:#fff;border-radius:var(--r);padding:clamp(20px,3vw,32px);position:relative;overflow:hidden}
+.goal h3{font-size:18px;text-transform:uppercase;margin-bottom:10px;color:var(--sun)}
+.goal p{font-size:16px;max-width:60ch}
+.goal::after{content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;border:30px solid rgba(255,255,255,.12)}
+.interests{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.interests span{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);padding:6px 12px;border-radius:99px;font-size:13.5px;font-weight:600}
+
+/* report table */
+.report{margin-top:26px;border:2px solid var(--ink);border-radius:var(--r);overflow:hidden;background:#fff}
+.report-head{display:flex;justify-content:space-between;align-items:center;background:var(--ink);color:var(--paper);padding:12px 18px;font-family:var(--mono);font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.report-head i{font-style:normal;color:var(--sun)}
+.row{display:grid;grid-template-columns:62px 1fr auto;gap:14px;align-items:center;padding:14px 18px;border-top:1px dashed #CFCAD6;transition:background .2s}
+.row:hover{background:#FFF7D1}
+.row .code{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.row .k{font-weight:600}
+.row .v{font-family:var(--display);font-weight:800;font-size:clamp(16px,2vw,22px);text-align:right;font-variant-numeric:tabular-nums}
+.row .v.up{color:#0E8A45}
+@media (max-width:860px){.about-grid{grid-template-columns:1fr}.photo-card{aspect-ratio:4/3.6}}
+@media (max-width:480px){.row{grid-template-columns:44px 1fr auto;gap:10px;padding:12px 14px}}
+
+/* education */
+.edu{display:grid;grid-template-columns:1.3fr 1fr;gap:18px}
+.edu-main{background:var(--wine);color:#fff;border-radius:var(--r);padding:clamp(24px,4vw,44px);position:relative;overflow:hidden;min-height:340px;display:flex;flex-direction:column}
+.edu-main .yrs{font-family:var(--display);font-weight:900;font-size:clamp(44px,7vw,92px);line-height:.9;color:var(--sun);font-variant-numeric:tabular-nums}
+.edu-main h3{font-size:clamp(20px,2.4vw,28px);margin:18px 0 8px;text-transform:none;letter-spacing:-.01em}
+.edu-main p{opacity:.92;max-width:52ch}
+.edu-main .prof{margin-top:auto;padding-top:22px;font-weight:700}
+.edu-main .prof span{display:inline-block;background:#fff;color:var(--wine);padding:6px 12px;border-radius:10px;margin-top:8px;font-weight:800}
+.edu-main .cap{position:absolute;right:-20px;top:-20px;width:170px;opacity:.16}
+.edu-side{display:grid;gap:18px}
+.card{border:2px solid var(--ink);border-radius:var(--r);padding:clamp(20px,3vw,28px);background:#fff;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.card:hover{transform:translate(-4px,-4px);box-shadow:8px 8px 0 var(--ink)}
+.card h3{font-size:15px;text-transform:uppercase;margin-bottom:14px;font-weight:800;letter-spacing:0}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{border:1.5px solid var(--ink);border-radius:99px;padding:6px 12px;font-size:14px;font-weight:600;transition:background .2s,color .2s}
+.tags span:hover{background:var(--cobalt);color:#fff;border-color:var(--cobalt)}
+.list{list-style:none;display:grid;gap:12px}
+.list li{display:grid;grid-template-columns:22px 1fr;gap:8px;font-weight:500}
+.list li::before{content:"↗";font-family:var(--mono);font-weight:700;color:var(--wine)}
+.stars{display:flex;gap:6px;align-items:center;margin-top:16px;font-weight:700;font-size:14px}
+@media (max-width:860px){.edu{grid-template-columns:1fr}}
+
+/* expertise */
+.exp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.skill{position:relative;border-radius:var(--r);padding:26px 22px 22px;min-height:330px;display:flex;flex-direction:column;border:2px solid var(--ink);background:#fff;overflow:hidden;transition:color .35s;isolation:isolate}
+.skill::before{content:"";position:absolute;inset:0;background:var(--bg,var(--cobalt));transform:translateY(101%);transition:transform .5s cubic-bezier(.2,.8,.2,1);z-index:-1}
+.skill:hover::before,.skill:focus-within::before{transform:none}
+.skill:hover{color:var(--fg,#fff)}
+.skill .num{font-family:var(--mono);font-weight:700;font-size:13px;display:flex;justify-content:space-between}
+.skill .ico{width:58px;height:58px;margin:26px 0 18px}
+.skill .ico *{stroke:currentColor}
+.skill h3{font-size:19px;text-transform:none;letter-spacing:-.01em;margin-bottom:10px}
+.skill p{font-size:15px;opacity:.85}
+.skill:nth-child(1){--bg:var(--cobalt)}
+.skill:nth-child(2){--bg:var(--wine)}
+.skill:nth-child(3){--bg:var(--sun);--fg:var(--ink)}
+.skill:nth-child(4){--bg:var(--ink);--fg:var(--sun)}
+.heat{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-top:auto;padding-top:18px}
+.heat i{aspect-ratio:1;border-radius:4px;background:var(--c);animation:heat 3.6s ease-in-out infinite;animation-delay:calc(var(--d) * -0.37s)}
+@keyframes heat{50%{filter:saturate(.4) brightness(1.15);transform:scale(.88)}}
+@media (max-width:1020px){.exp-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.exp-grid{grid-template-columns:1fr}.skill{min-height:0}}
+
+/* experience */
+.dark{background:var(--ink);color:var(--paper)}
+.dark h2 .o{-webkit-text-stroke-color:var(--paper)}
+.dark .kicker{color:var(--sun)}
+.dark .sec-note{color:#B9B3C2}
+.jobs{display:grid;gap:18px}
+.job{display:grid;grid-template-columns:220px 1fr;gap:clamp(18px,3vw,40px);border-top:1px solid #3A3442;padding-top:28px}
+.job .when{font-family:var(--mono);font-weight:700;font-size:14px;color:var(--sun)}
+.job .when b{display:block;font-family:var(--display);font-size:clamp(30px,4vw,48px);color:var(--paper);font-weight:900;margin-top:6px;line-height:1}
+.job h3{font-size:clamp(24px,3vw,36px);text-transform:none}
+.job .role{display:inline-block;margin:10px 0 16px;background:var(--wine);padding:5px 12px;border-radius:8px;font-weight:700;font-size:14px}
+.job ul{list-style:none;display:grid;gap:10px;max-width:64ch}
+.job li{display:grid;grid-template-columns:26px 1fr;color:#E2DDE8}
+.job li::before{content:"→";color:var(--sun);font-weight:800}
+.job .note{margin-top:14px;font-size:14px;color:#B9B3C2;font-style:italic}
+.kpis{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.kpis span{font-family:var(--mono);font-size:13px;font-weight:700;border:1.5px solid #5B5463;border-radius:10px;padding:6px 10px}
+@media (max-width:760px){.job{grid-template-columns:1fr;gap:10px}}
+
+/* tools */
+.tools{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:16px}
+.excel{grid-row:span 2;background:#fff;border:2px solid var(--ink);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.fx{display:flex;align-items:center;gap:10px;border-bottom:2px solid var(--ink);padding:10px 14px;font-family:var(--mono);font-size:14px;background:#F0EFF4;min-height:46px}
+.fx i{font-style:italic;font-weight:700;color:var(--muted);border-right:1.5px solid #CFCAD6;padding-right:10px}
+.fx .caret{display:inline-block;width:2px;height:1.1em;background:var(--cobalt);vertical-align:-3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.sheet{display:grid;grid-template-columns:34px repeat(3,1fr);font-family:var(--mono);font-size:13px;flex:1}
+.sheet div{border-right:1px solid #E1DEE7;border-bottom:1px solid #E1DEE7;padding:8px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sheet .h{background:#F0EFF4;color:var(--muted);text-align:center;font-weight:700}
+.sheet .sel{outline:2px solid var(--cobalt);outline-offset:-2px;background:#EEF0FF}
+.excel .foot{padding:18px;border-top:2px solid var(--ink)}
+.excel h3{font-size:22px;text-transform:none;margin-bottom:8px}
+.tool{border:2px solid var(--ink);border-radius:var(--r);padding:22px;background:#fff;display:flex;flex-direction:column;gap:10px;transition:transform .3s,box-shadow .3s}
+.tool:hover{transform:translate(-4px,-4px);box-shadow:8px 8px 0 var(--cobalt)}
+.tool h3{font-size:19px;text-transform:none}
+.tool p{font-size:15px;color:var(--muted)}
+.tool .big{font-family:var(--display);font-weight:900;font-size:40px;line-height:1;color:var(--cobalt)}
+.tool.yellow{background:var(--sun)}
+.tool.yellow p{color:var(--ink)}
+.lvl{display:flex;gap:5px;margin-top:auto}
+.lvl i{flex:1;height:8px;border-radius:4px;background:#E1DEE7}
+.lvl i.on{background:var(--cobalt)}
+@media (max-width:960px){.tools{grid-template-columns:1fr 1fr}.excel{grid-column:span 2;grid-row:auto}}
+@media (max-width:560px){.tools{grid-template-columns:1fr}.excel{grid-column:auto}.sheet{font-size:11.5px}}
+
+/* achievements bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:minmax(150px,auto);gap:16px}
+.tile{border-radius:var(--r);padding:clamp(20px,2.6vw,28px);border:2px solid var(--ink);position:relative;overflow:hidden;display:flex;flex-direction:column;gap:10px;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.tile:hover{transform:rotate(-.8deg) scale(1.015)}
+.tile .date{font-family:var(--mono);font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.tile h3{font-size:clamp(18px,2vw,23px);text-transform:none;letter-spacing:-.01em;line-height:1.12}
+.tile p{font-size:15px}
+.t-olymp{grid-column:span 3;background:var(--sun)}
+.t-olymp .rank{font-family:var(--display);font-weight:900;font-size:clamp(70px,10vw,128px);line-height:.85;margin-top:auto}
+.t-olymp .rank small{font-size:.32em;vertical-align:top;margin-left:6px}
+.t-eng{grid-column:span 3;background:var(--cobalt);color:#fff;border-color:var(--cobalt)}
+.t-eng .rank{font-family:var(--display);font-weight:900;font-size:clamp(70px,10vw,128px);line-height:.85;margin-top:auto;color:var(--sun)}
+.t-eng .rank small{font-size:.32em;vertical-align:top;margin-left:6px}
+.t-conf{grid-column:span 4;background:var(--wine);color:#fff;border-color:var(--wine)}
+.t-conf blockquote{font-family:var(--display);font-weight:600;font-size:clamp(18px,2.2vw,26px);line-height:1.2;margin-top:6px}
+.t-photo{grid-column:span 2;grid-row:span 2;padding:0}
+.t-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.t-photo .cap{position:absolute;left:12px;right:12px;bottom:12px;background:var(--paper);border:2px solid var(--ink);border-radius:12px;padding:10px 12px;font-weight:700;font-size:14px}
+.t-small{grid-column:span 2;background:#fff}
+.t-paper{grid-column:span 4;background:#fff}
+.t-paper .q{font-family:var(--display);font-weight:600;font-size:clamp(17px,1.9vw,22px);line-height:1.2}
+.t-small .ico,.t-paper .ico{font-family:var(--mono);font-weight:700;color:var(--wine);font-size:13px}
+.note-line{margin-top:18px;color:var(--muted);font-weight:600;font-size:15px}
+@media (max-width:960px){.bento{grid-template-columns:repeat(2,1fr)}.t-olymp,.t-eng,.t-conf,.t-paper{grid-column:span 2}.t-small{grid-column:span 1}.t-photo{grid-column:span 1;grid-row:span 2}}
+@media (max-width:560px){.bento{grid-template-columns:1fr}.t-olymp,.t-eng,.t-conf,.t-paper,.t-small,.t-photo{grid-column:auto}.t-photo{grid-row:auto;aspect-ratio:4/4.4}}
+
+/* volunteering */
+.vol{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:v}
+.vi{border-top:4px solid var(--ink);padding-top:18px;counter-increment:v}
+.vi::before{content:"0" counter(v);font-family:var(--display);font-weight:900;font-size:44px;color:var(--wine);line-height:1;display:block;margin-bottom:12px}
+.vi h3{font-size:17px;text-transform:none;margin-bottom:8px;letter-spacing:-.01em;line-height:1.2}
+.vi p{font-size:15px;color:var(--muted)}
+.vi .yr{display:inline-block;margin-top:10px;font-family:var(--mono);font-weight:700;font-size:12.5px;background:var(--sun);padding:3px 8px;border-radius:6px}
+@media (max-width:960px){.vol{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.vol{grid-template-columns:1fr}}
+
+/* courses */
+.courses{display:grid;border-top:2px solid var(--ink)}
+.course{display:grid;grid-template-columns:90px 1fr auto;gap:18px;align-items:center;padding:22px 6px;border-bottom:2px solid var(--ink);position:relative;transition:padding .35s cubic-bezier(.2,.8,.2,1),background .35s,color .35s}
+.course:hover{background:var(--cobalt);color:#fff;padding-left:22px;padding-right:22px}
+.course .y{font-family:var(--mono);font-weight:700;font-size:15px}
+.course h3{font-size:clamp(17px,2.4vw,28px);text-transform:none;letter-spacing:-.01em}
+.course .t{font-size:14px;font-weight:700;text-align:right;white-space:nowrap}
+.course .t small{display:block;font-weight:500;opacity:.75}
+@media (max-width:560px){.course{grid-template-columns:1fr;gap:6px}.course .t{text-align:left}}
+
+/* gallery + contact */
+.contact{background:var(--wine);color:#fff;overflow:hidden}
+.contact h2{font-size:clamp(40px,8.5vw,120px)}
+.contact h2 .o{-webkit-text-stroke-color:#fff}
+.contact .kicker{color:var(--sun)}
+.c-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(24px,4vw,56px);align-items:end;margin-top:36px}
+.c-items{display:grid;gap:12px}
+.c-item{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.35);border-radius:16px;padding:16px 18px;transition:background .2s}
+.c-item:hover{background:rgba(255,255,255,.18)}
+.c-item small{display:block;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;opacity:.75}
+.c-item a{font-weight:800;font-size:clamp(16px,2.2vw,22px);text-decoration:none;word-break:break-all}
+.copy{background:var(--sun);color:var(--ink);font-weight:800;font-size:13px;padding:9px 14px;border-radius:99px;flex-shrink:0;transition:transform .2s}
+.copy:active{transform:scale(.94)}
+.stack{position:relative;height:clamp(300px,36vw,420px)}
+.stack figure{position:absolute;width:56%;border-radius:18px;overflow:hidden;border:3px solid #fff;box-shadow:0 20px 40px rgba(0,0,0,.25);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.stack figure img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.stack figure:nth-child(1){left:0;top:8%;transform:rotate(-8deg)}
+.stack figure:nth-child(2){left:22%;top:0;transform:rotate(3deg);z-index:2}
+.stack figure:nth-child(3){right:0;top:12%;transform:rotate(10deg)}
+.stack:hover figure:nth-child(1){transform:rotate(-14deg) translateX(-14px)}
+.stack:hover figure:nth-child(3){transform:rotate(15deg) translateX(14px)}
+.stack:hover figure:nth-child(2){transform:rotate(0) translateY(-10px)}
+.relocate{margin-top:18px;display:flex;gap:10px;align-items:center;font-weight:700}
+.relocate span{background:var(--sun);color:var(--ink);padding:6px 12px;border-radius:99px;font-size:14px}
+@media (max-width:860px){.c-grid{grid-template-columns:1fr}.stack{height:clamp(280px,80vw,400px);max-width:460px;width:100%;margin:0 auto}}
+footer{background:var(--ink);color:#B9B3C2;padding:26px 0;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.toast{visibility:hidden;position:fixed;left:50%;bottom:24px;transform:translate(-50%,140%);background:var(--ink);color:var(--sun);padding:12px 20px;border-radius:99px;font-weight:700;z-index:80;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.toast.show{visibility:visible;transform:translate(-50%,0)}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+  .progress{display:none}
+}
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+
+<header id="top">
+  <div class="wrap nav">
+    <a class="logo" href="#hero" aria-label="Дарья Цуканова"><i>ДЦ</i><span data-k="logo">Дарья Цуканова</span></a>
+    <nav class="links" aria-label="Разделы">
+      <a href="#about" data-k="n1">Обо мне</a>
+      <a href="#skills" data-k="n2">Навыки</a>
+      <a href="#experience" data-k="n3">Опыт</a>
+      <a href="#awards" data-k="n4">Достижения</a>
+      <a href="#contact" data-k="n5">Контакты</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" id="lang-ru" aria-pressed="true">RU</button>
+      <button type="button" id="lang-en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="hero" style="padding-top:clamp(24px,5vw,56px)">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow"><b></b><span data-k="h_eye">Открыта к стажировке · 2026–2027</span></span>
+      <h1 class="name"><span class="line"><span data-k="h_n1">Дарья</span></span><span class="line"><span data-k="h_n2">Цуканова</span></span></h1>
+      <p class="lead" data-k="h_lead" data-html>Стажёр финансово-экономического направления. Финансовый анализ, <mark>управление рисками</mark> и экономическая безопасность.</p>
+      <div class="cta">
+        <a class="btn solid magnet" href="#contact"><span data-k="h_b1">Связаться</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn ghost magnet" href="#experience" data-k="h_b2">Смотреть опыт</a>
+      </div>
+      <div class="meta-row">
+        <span>📍 <span data-k="h_m1">Курск → готова к переезду в Москву</span></span>
+        <span>⏱ <span data-k="h_m2">Полная занятость</span></span>
+        <span>🎓 <span data-k="h_m3">Финансовый университет, 4 курс</span></span>
+      </div>
+    </div>
+    <div class="portrait">
+      <div class="arch"><img src="hero.webp" alt="Портрет Дарьи Цукановой" data-k-alt="alt_hero" width="760" height="1053" fetchpriority="high"></div>
+      <div class="badge" aria-hidden="true">
+        <svg viewBox="0 0 132 132"><defs><path id="circ" d="M66,66 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"/></defs><text><textPath href="#circ" id="badge-text">ФИНАНСЫ • РИСКИ • АНАЛИЗ • КОНТРОЛЬ • </textPath></text></svg>
+        <span class="core">₽↗</span>
+      </div>
+      <div class="chip c1" aria-hidden="true">P&amp;L <span class="up">▲</span></div>
+      <div class="chip c2" aria-hidden="true">EBITDA <span class="up">▲</span></div>
+      <div class="chip c3" aria-hidden="true">=XLOOKUP()</div>
+      <svg class="spark" viewBox="0 0 600 160" preserveAspectRatio="none" aria-hidden="true">
+        <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B3FF0" stop-opacity=".22"/><stop offset="1" stop-color="#2B3FF0" stop-opacity="0"/></linearGradient></defs>
+        <path class="area" d="M0,140 L60,128 L120,132 L180,110 L240,116 L300,88 L360,94 L420,62 L480,70 L540,34 L600,14 L600,160 L0,160Z"/>
+        <path d="M0,140 L60,128 L120,132 L180,110 L240,116 L300,88 L360,94 L420,62 L480,70 L540,34 L600,14"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true"><div class="track" id="t1"></div></div>
+<div class="ticker alt" aria-hidden="true"><div class="track" id="t2"></div></div>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="kicker" data-k="a_k">01 · Обо мне</div><h2 data-k="a_h" data-html>Цифры, <span class="o">люди</span>, риски</h2></div>
+      <p class="sec-note" data-k="a_note">Совмещаю очное обучение, работу менеджером ресторана и финансовое просвещение.</p>
+    </div>
+    <div class="about-grid">
+      <div class="photo-card rv">
+        <img src="sky.webp" alt="Дарья Цуканова в деловом образе" data-k-alt="alt_sky" loading="lazy" width="900" height="1024">
+        <span class="tag">✦ <span data-k="a_tag">Выпускной курс · 2027</span></span>
+      </div>
+      <div class="about-text">
+        <p class="rv" data-k="a_p1">Студентка выпускного курса Финансового университета. Совмещаю очное обучение с работой менеджером ресторана и участием в финансовом просвещении. Имею опыт преподавания финансовой грамотности школьникам и выступления на научной конференции.</p>
+        <p class="rv" data-k="a_p2">Хочу применять профильные знания в реальных задачах организации и последовательно развиваться в выбранной команде. Готова осваивать новые инструменты, разбираться в сложных задачах и учиться у опытных коллег. Открыта к обратной связи.</p>
+
+        <div class="report rv" aria-label="Ключевые показатели">
+          <div class="report-head"><span data-k="r_h">Отчёт о показателях</span><i data-k="r_h2">на 11.2026</i></div>
+          <div class="row"><span class="code">1100</span><span class="k" data-k="r1">Курс бакалавриата</span><span class="v tab" data-k="r1v">4 / 4</span></div>
+          <div class="row"><span class="code">1200</span><span class="k" data-k="r2">Дипломы олимпиад I степени</span><span class="v up tab">2 ▲</span></div>
+          <div class="row"><span class="code">1300</span><span class="k" data-k="r3">Научные конференции и круглые столы</span><span class="v tab">3</span></div>
+          <div class="row"><span class="code">1400</span><span class="k" data-k="r4">Менеджер в Бургер Кинг</span><span class="v tab" data-k="r4v">с 2024</span></div>
+          <div class="row"><span class="code">1500</span><span class="k" data-k="r5">Стипендия</span><span class="v up" data-k="r5v">повышенная</span></div>
+          <div class="row"><span class="code">1600</span><span class="k" data-k="r6">Программы доп. образования</span><span class="v tab">4</span></div>
+        </div>
+
+        <div class="goal rv">
+          <h3 data-k="g_h">Профессиональная цель</h3>
+          <p data-k="g_p">Преддипломная практика или стажировка с возможностью дальнейшего трудоустройства. Рассматриваю банки, коммерческие компании и государственные организации. Готова начать до официального периода практики; дату выхода и учебные обязательства согласую заранее.</p>
+          <div class="interests">
+            <span data-k="i1">Финансовый анализ</span><span data-k="i2">Финансовый мониторинг</span><span data-k="i3">Управление рисками</span><span data-k="i4">Внутренний контроль</span><span data-k="i5">Экономическая безопасность</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="kicker" data-k="e_k">02 · Образование</div><h2 data-k="e_h" data-html>Финансовый <span class="o">университет</span></h2></div>
+    </div>
+    <div class="edu">
+      <div class="edu-main rv">
+        <svg class="cap" viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" aria-hidden="true"><path d="M50 18 6 38l44 20 44-20Z"/><path d="M24 47v20c0 8 12 14 26 14s26-6 26-14V47"/><path d="M90 40v26"/></svg>
+        <div class="yrs">2023—2027</div>
+        <h3 data-k="e_u">Финансовый университет при Правительстве Российской Федерации</h3>
+        <p data-k="e_d">Курский кампус · бакалавриат, очная форма · 38.03.01 «Экономика» · 4-й курс</p>
+        <div class="prof"><span data-k="e_pl">Профиль</span><br><span data-k="e_p">Финансовая разведка, управление рисками и экономическая безопасность</span></div>
+      </div>
+      <div class="edu-side">
+        <div class="card rv">
+          <h3 data-k="e_dis">Профильные дисциплины</h3>
+          <div class="tags">
+            <span data-k="d1">Финансовый анализ</span><span data-k="d2">Бухгалтерский учёт</span><span data-k="d3">Аудит</span><span data-k="d4">Экономическая безопасность</span><span data-k="d5">Налогообложение</span><span data-k="d6">Финансовый рынок</span><span data-k="d7">Финансовые расследования</span><span data-k="d8">Экономическая экспертиза</span>
+          </div>
+          <div class="stars">★★★★★ <span data-k="e_gr">отличные оценки за 3 года и одна «хорошо»</span></div>
+        </div>
+        <div class="card rv">
+          <h3 data-k="e_cw">Курсовые работы</h3>
+          <ul class="list">
+            <li data-k="cw1">«Организация расследования экономических преступлений в сфере финансовой разведки»</li>
+            <li data-k="cw2">«Финансовые инновации: сущность, виды, последствия»</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="kicker" data-k="s_k">03 · Компетенции</div><h2 data-k="s_h" data-html>Карта <span class="o">навыков</span></h2></div>
+      <p class="sec-note" data-k="s_note">Профессиональные знания и учебная практика. Наведите на карточку.</p>
+    </div>
+    <div class="exp-grid">
+      <article class="skill rv" tabindex="0">
+        <div class="num"><span>01</span><span>↗</span></div>
+        <svg class="ico" viewBox="0 0 58 58" fill="none" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 50h46"/><path d="M12 42V30M24 42V20M36 42V26M48 42V10"/></svg>
+        <h3 data-k="sk1">Финансовый анализ</h3>
+        <p data-k="sk1p">Работа с бухгалтерской отчётностью, расчёт финансовых коэффициентов, оценка платёжеспособности и риска банкротства.</p>
+      </article>
+      <article class="skill rv" tabindex="0">
+        <div class="num"><span>02</span><span>↗</span></div>
+        <h3 style="margin-top:26px" data-k="sk2">Управление рисками</h3>
+        <p data-k="sk2p">Учебные задания по оценке кредитных рисков, составлению карт рисков и проверке внутренних контролей.</p>
+        <div class="heat" aria-hidden="true" id="heat"></div>
+      </article>
+      <article class="skill rv" tabindex="0">
+        <div class="num"><span>03</span><span>↗</span></div>
+        <svg class="ico" viewBox="0 0 58 58" fill="none" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M29 6 10 13v14c0 12 8 21 19 25 11-4 19-13 19-25V13Z"/><path d="m20 29 6 6 12-13"/></svg>
+        <h3 data-k="sk3">Финмониторинг и экономическая безопасность</h3>
+        <p data-k="sk3p">Учебные задания по проверке контрагентов и разбору подозрительных операций.</p>
+      </article>
+      <article class="skill rv" tabindex="0">
+        <div class="num"><span>04</span><span>↗</span></div>
+        <svg class="ico" viewBox="0 0 58 58" fill="none" stroke-width="3" stroke-linecap="round" aria-hidden="true"><rect x="10" y="6" width="38" height="46" rx="5"/><path d="M18 18h22M18 27h22M18 36h12"/></svg>
+        <h3 data-k="sk4">Аналитические материалы</h3>
+        <p data-k="sk4p">Подготовка расчётов, отчётов, аналитических записок и презентаций в рамках обучения.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="dark">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="kicker" data-k="x_k">04 · Опыт работы</div><h2 data-k="x_h" data-html>Опыт <span class="o">в деле</span></h2></div>
+      <p class="sec-note" data-k="x_note">Работа совмещается с очным обучением в университете.</p>
+    </div>
+    <div class="jobs">
+      <article class="job rv">
+        <div class="when"><span data-k="j1w">2024 — настоящее время</span><b data-k="j1b">Сейчас</b></div>
+        <div>
+          <h3 data-k="j1t">Бургер Кинг</h3>
+          <span class="role" data-k="j1r">Менеджер</span>
+          <ul>
+            <li data-k="j1a">Работа с людьми в процессе деятельности ресторана.</li>
+            <li data-k="j1b2">Работа с финансовыми показателями ресторана: P&amp;L и EBITDA.</li>
+            <li data-k="j1c">Использование Axapta, WFM и CRM для выполнения рабочих задач.</li>
+          </ul>
+          <div class="kpis"><span>P&amp;L</span><span>EBITDA</span><span>Axapta</span><span>WFM</span><span>CRM</span></div>
+        </div>
+      </article>
+      <article class="job rv">
+        <div class="when"><span data-k="j2w">Завершено в октябре 2026</span><b>7–9</b></div>
+        <div>
+          <h3 data-k="j2t">Школа № 9 имени А. Е. Боровых</h3>
+          <span class="role" data-k="j2r">Преподавание финансовой грамотности · Курск</span>
+          <ul>
+            <li data-k="j2a">Проведение занятий по финансовой грамотности для учащихся 7–9-х классов.</li>
+            <li data-k="j2b">Объяснение финансовых тем школьной аудитории и взаимодействие с учащимися на занятиях.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="tools">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="kicker" data-k="t_k">05 · Инструменты</div><h2 data-k="t_h" data-html>Рабочий <span class="o">стек</span></h2></div>
+    </div>
+    <div class="tools">
+      <div class="excel rv">
+        <div class="fx"><i>fx</i><span id="formula">=СУММЕСЛИ(B:B;"Выручка";C:C)</span><span class="caret"></span></div>
+        <div class="sheet" aria-hidden="true">
+          <div class="h"></div><div class="h">A</div><div class="h">B</div><div class="h">C</div>
+          <div class="h">1</div><div><b data-k="xh1">Период</b></div><div><b data-k="xh2">Статья</b></div><div><b data-k="xh3">Сумма, ₽</b></div>
+          <div class="h">2</div><div>Q1</div><div data-k="xr">Выручка</div><div class="tab">1 240 000</div>
+          <div class="h">3</div><div>Q1</div><div data-k="xe">Расходы</div><div class="tab">−860 000</div>
+          <div class="h">4</div><div>Q2</div><div data-k="xr2">Выручка</div><div class="tab">1 410 000</div>
+          <div class="h">5</div><div data-k="xt">Итог</div><div data-k="xr3">Выручка</div><div class="sel tab">2 650 000</div>
+        </div>
+        <div class="foot">
+          <h3>Microsoft Excel</h3>
+          <p data-k="xl">Формулы ЕСЛИ, СУММЕСЛИ, ВПР/XLOOKUP; сводные таблицы; графики; обработка таблиц и Power Query.</p>
+        </div>
+      </div>
+      <div class="tool rv">
+        <div class="big">ERP</div>
+        <h3>Axapta · WFM · CRM</h3>
+        <p data-k="tl1">Ежедневно в рабочих задачах менеджера ресторана.</p>
+      </div>
+      <div class="tool rv">
+        <div class="big">§</div>
+        <h3 data-k="tl2h">КонсультантПлюс</h3>
+        <p data-k="tl2">Работа с нормативной базой.</p>
+      </div>
+      <div class="tool rv">
+        <div class="big">{py}</div>
+        <h3>Python</h3>
+        <p data-k="tl3">Опыт использования.</p>
+      </div>
+      <div class="tool yellow rv">
+        <div class="big" style="color:var(--ink)">A2</div>
+        <h3 data-k="tl4h">Английский язык</h3>
+        <p data-k="tl4">Чтение финансовых текстов и письменная коммуникация в пределах уровня.</p>
+        <div class="lvl" aria-label="A2"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="awards" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="kicker" data-k="w_k">06 · Достижения</div><h2 data-k="w_h" data-html>Наука <span class="o">и победы</span></h2></div>
+      <p class="sec-note" data-k="w_note">Олимпиады, конференции и научная работа.</p>
+    </div>
+    <div class="bento">
+      <div class="tile t-olymp rv">
+        <span class="date" data-k="o1d">20 ноября 2025 · экономика</span>
+        <h3 data-k="o1t">Диплом победителя Всероссийской олимпиады «Двигатель прогресса: экономический вызов»</h3>
+        <div class="rank">1<small data-k="deg">I степень</small></div>
+      </div>
+      <div class="tile t-eng rv">
+        <span class="date" data-k="o2d">27 ноября 2025 · английский язык</span>
+        <h3 data-k="o2t">Диплом победителя Международной олимпиады «Ghostly English Grammar: Trick-or-Treat»</h3>
+        <div class="rank">1<small data-k="deg2">I степень</small></div>
+      </div>
+      <div class="tile t-conf rv">
+        <span class="date" data-k="c1d">26 мая 2026 · доклад на международной конференции</span>
+        <blockquote data-k="c1q">«Регулирование деятельности цифровых платформ: поиск баланса между инновациями и защитой прав потребителей»</blockquote>
+        <p data-k="c1p">II Международная научно-практическая конференция «Проблемы и приоритеты развития современной экономики», Курский филиал Финансового университета. Очное участие.</p>
+      </div>
+      <div class="tile t-photo rv">
+        <img src="medal.webp" alt="Дарья с наградной медалью" data-k-alt="alt_medal" loading="lazy" width="820" height="1019">
+        <div class="cap" data-k="ph_cap">Финансовое просвещение 🏅</div>
+      </div>
+      <div class="tile t-small rv">
+        <span class="ico" data-k="c2d">27.03.2025 · Пермь</span>
+        <h3 data-k="c2t">Межвузовская конференция «Юность. Творчество. Прогресс»</h3>
+        <p data-k="c2p">Секция «Социально-экономическое развитие России: прошлое, настоящее и будущее».</p>
+      </div>
+      <div class="tile t-small rv">
+        <span class="ico" data-k="c3d">2025 · Курск</span>
+        <h3 data-k="c3t">Круглый стол «Стратегии роста: экономический анализ как ключ к успеху»</h3>
+      </div>
+      <div class="tile t-paper rv">
+        <span class="ico" data-k="pp_d">Научная работа · рук. О. В. Пшеничкова</span>
+        <p class="q" data-k="pp_q">«Место экономического анализа в современной системе эффективного управления бизнесом»</p>
+      </div>
+    </div>
+    <p class="note-line" data-k="w_proof">Дипломы, сертификаты и благодарности могу предоставить по запросу.</p>
+  </div>
+</section>
+
+<section id="volunteer" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="kicker" data-k="v_k">07 · Общественная деятельность</div><h2 data-k="v_h" data-html>Финансовое <span class="o">просвещение</span></h2></div>
+    </div>
+    <div class="vol">
+      <div class="vi rv"><h3 data-k="v1">Центр волонтёров «ФИНCentre»</h3><p data-k="v1p">Член центра финансового просвещения Курского филиала Финансового университета.</p><span class="yr" data-k="v1y">Благодарность · 2025</span></div>
+      <div class="vi rv"><h3 data-k="v2">Игротехник Кубка Курской области</h3><p data-k="v2p">Коммуникативные бои в рамках Всероссийского чемпионата по финансовой грамотности и предпринимательству.</p><span class="yr" data-k="v2y">Благодарности Минобрнауки КО · 2025, 2026</span></div>
+      <div class="vi rv"><h3 data-k="v3">IV Межрегиональный слёт волонтёров</h3><p data-k="v3p">Слёт волонтёров финансового просвещения, Рязань.</p><span class="yr" data-k="v3y">Благодарность РИРО · 2025</span></div>
+      <div class="vi rv"><h3 data-k="v4">Молодёжная политика региона</h3><p data-k="v4p">Благодарственное письмо Комитета молодёжной политики Курской области.</p><span class="yr">2026</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="courses" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="kicker" data-k="k_k">08 · Дополнительное образование</div><h2 data-k="k_h" data-html>Учусь <span class="o">дальше</span></h2></div>
+    </div>
+    <div class="courses">
+      <div class="course rv"><span class="y">2026</span><h3 data-k="k1">Государственное и муниципальное управление</h3><span class="t"><span data-k="pp">Переподготовка</span><small data-k="m3">3 месяца</small></span></div>
+      <div class="course rv"><span class="y">2025</span><h3 data-k="k2">Специалист в сфере закупок</h3><span class="t"><span data-k="pp2">Переподготовка</span><small data-k="m2">2 месяца</small></span></div>
+      <div class="course rv"><span class="y">2024</span><h3 data-k="k3">Основы финансовой грамотности</h3><span class="t"><span data-k="pk">Повышение квалификации</span><small data-k="w2">2 недели</small></span></div>
+      <div class="course rv"><span class="y">2024</span><h3 data-k="k4">Системный менеджмент и наставничество</h3><span class="t"><span data-k="pk2">Повышение квалификации</span></span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="kicker" data-k="ct_k">09 · Контакты</div>
+    <h2 data-k="ct_h" data-html>Давайте <span class="o">знакомиться</span></h2>
+    <div class="c-grid">
+      <div>
+        <div class="c-items">
+          <div class="c-item"><div><small>Email</small><a href="mailto:daracukanova02@gmail.com">daracukanova02@gmail.com</a></div><button class="copy" type="button" data-copy="daracukanova02@gmail.com" data-k="copy">Копировать</button></div>
+          <div class="c-item"><div><small data-k="tel">Телефон</small><a href="tel:+79513266997">+7 951 326-69-97</a></div><button class="copy" type="button" data-copy="+79513266997" data-k="copy2">Копировать</button></div>
+        </div>
+        <div class="relocate"><span data-k="rl1">Курск</span>→<span data-k="rl2">Москва</span><span style="background:transparent;color:#fff;padding:0" data-k="rl3">готова к переезду</span></div>
+      </div>
+      <div class="stack" aria-hidden="true">
+        <figure><img src="park1.webp" alt="" loading="lazy" width="760" height="854"></figure>
+        <figure><img src="hero.webp" alt="" loading="lazy" width="760" height="1053"></figure>
+        <figure><img src="park2.webp" alt="" loading="lazy" width="760" height="1069"></figure>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span data-k="f1">© 2026 Дарья Цуканова</span><a href="#hero" data-k="f2">Наверх ↑</a></div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  /* tickers */
+  var T={
+    ru:[["ФИНАНСОВЫЙ АНАЛИЗ","▲"],["P&L","▲"],["EBITDA","▲"],["КАРТА РИСКОВ","▲"],["ФИНМОНИТОРИНГ","▲"],["ВНУТРЕННИЙ КОНТРОЛЬ","▲"],["EXCEL · POWER QUERY","▲"],["ВПР / XLOOKUP","▲"],["АУДИТ","▲"],["НАЛОГООБЛОЖЕНИЕ","▲"]],
+    ru2:["ФИНАНСОВЫЙ УНИВЕРСИТЕТ","2 ДИПЛОМА I СТЕПЕНИ","МЕЖДУНАРОДНАЯ КОНФЕРЕНЦИЯ","ФИНCENTRE","ГОТОВА К ПЕРЕЕЗДУ В МОСКВУ","ПОВЫШЕННАЯ СТИПЕНДИЯ"],
+    en:[["FINANCIAL ANALYSIS","▲"],["P&L","▲"],["EBITDA","▲"],["RISK MAPS","▲"],["FINANCIAL MONITORING","▲"],["INTERNAL CONTROL","▲"],["EXCEL · POWER QUERY","▲"],["VLOOKUP / XLOOKUP","▲"],["AUDIT","▲"],["TAXATION","▲"]],
+    en2:["FINANCIAL UNIVERSITY","2 FIRST-PLACE DIPLOMAS","INTERNATIONAL CONFERENCE","FINCENTRE","OPEN TO RELOCATING TO MOSCOW","ENHANCED SCHOLARSHIP"]
+  };
+  function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+  function fillTickers(l){
+    var a=T[l].map(function(x){return "<span>"+esc(x[0])+" <em>"+x[1]+"</em></span>"}).join("");
+    var b=T[l+"2"].map(function(x){return "<span>✦ "+esc(x)+"</span>"}).join("");
+    document.getElementById("t1").innerHTML=a+a;
+    document.getElementById("t2").innerHTML=b+b;
+  }
+
+  /* risk heat map */
+  var heat=document.getElementById("heat"),cols=["#2EC27E","#9BD94A","#FFD43B","#FF8A3D","#E5383B"];
+  for(var i=0;i<25;i++){var r=4-Math.floor(i/5),c=i%5,lvl=Math.min(4,Math.round((r+c)/2));var el=document.createElement("i");el.style.setProperty("--c",cols[lvl]);el.style.setProperty("--d",(i*7)%25);heat.appendChild(el)}
+
+  /* i18n */
+  var EN={
+    logo:"Daria Tsukanova",n1:"About",n2:"Skills",n3:"Experience",n4:"Awards",n5:"Contact",
+    h_eye:"Open to internships · 2026–2027",h_n1:"Daria",h_n2:"Tsukanova",
+    h_lead:"Trainee in finance and economics. Financial analysis, <mark>risk management</mark> and economic security.",
+    h_b1:"Get in touch",h_b2:"See experience",h_m1:"Kursk → open to relocating to Moscow",h_m2:"Full-time",h_m3:"Financial University, 4th year",
+    alt_hero:"Portrait of Daria Tsukanova",alt_sky:"Daria Tsukanova in business attire",alt_medal:"Daria with an award medal",
+    a_k:"01 · About",a_h:"Numbers, <span class=\"o\">people</span>, risks",a_note:"Combining full-time study, work as a restaurant manager and financial literacy outreach.",a_tag:"Final year · 2027",
+    a_p1:"Final-year student at the Financial University. I combine full-time study with work as a restaurant manager and financial literacy outreach. I have taught financial literacy to school students and presented at a scientific conference.",
+    a_p2:"I want to apply my knowledge to real tasks and grow steadily within a team. I am ready to learn new tools, dig into complex problems and learn from experienced colleagues. Open to feedback.",
+    r_h:"Performance report",r_h2:"as of 11.2026",r1:"Year of bachelor's programme",r1v:"4 / 4",r2:"First-place olympiad diplomas",r3:"Conferences and round tables",r4:"Manager at Burger King",r4v:"since 2024",r5:"Scholarship",r5v:"enhanced",r6:"Continuing education programmes",
+    g_h:"Career goal",g_p:"A pre-graduation placement or internship with a path to employment. Considering banks, commercial companies and government organisations. Ready to start before the official placement period; start date and study commitments agreed in advance.",
+    i1:"Financial analysis",i2:"Financial monitoring",i3:"Risk management",i4:"Internal control",i5:"Economic security",
+    e_k:"02 · Education",e_h:"Financial <span class=\"o\">University</span>",e_u:"Financial University under the Government of the Russian Federation",e_d:"Kursk campus · Bachelor's, full-time · 38.03.01 Economics · 4th year",e_pl:"Major",e_p:"Financial Intelligence, Risk Management and Economic Security",
+    e_dis:"Core subjects",d1:"Financial analysis",d2:"Accounting",d3:"Audit",d4:"Economic security",d5:"Taxation",d6:"Financial markets",d7:"Financial investigations",d8:"Economic expert review",
+    e_gr:"excellent grades for 3 years, with a single “good”",e_cw:"Term papers",cw1:"“Organising investigations of economic crimes in financial intelligence”",cw2:"“Financial innovations: essence, types, consequences”",
+    s_k:"03 · Competencies",s_h:"Skills <span class=\"o\">map</span>",s_note:"Professional knowledge and coursework. Hover over a card.",
+    sk1:"Financial analysis",sk1p:"Working with financial statements, calculating financial ratios, assessing solvency and bankruptcy risk.",
+    sk2:"Risk management",sk2p:"Coursework on credit risk assessment, building risk maps and testing internal controls.",
+    sk3:"Financial monitoring & economic security",sk3p:"Coursework on counterparty due diligence and analysing suspicious transactions.",
+    sk4:"Analytical materials",sk4p:"Preparing calculations, reports, analytical notes and presentations as part of my studies.",
+    x_k:"04 · Experience",x_h:"Hands-on <span class=\"o\">experience</span>",x_note:"Work combined with full-time university study.",
+    j1w:"2024 — present",j1b:"Now",j1t:"Burger King",j1r:"Manager",j1a:"Working with people across restaurant operations.",j1b2:"Working with the restaurant's financial metrics: P&amp;L and EBITDA.",j1c:"Using Axapta, WFM and CRM in daily tasks.",
+    j2w:"Completed October 2026",j2t:"School No. 9 named after A. E. Borovykh",j2r:"Teaching financial literacy · Kursk",j2a:"Ran financial literacy classes for grades 7–9.",j2b:"Explained financial topics to a school audience and engaged students in class.",
+    t_k:"05 · Tools",t_h:"Working <span class=\"o\">stack</span>",xl:"IF, SUMIF, VLOOKUP/XLOOKUP formulas; pivot tables; charts; data processing and Power Query.",
+    tl1:"Used daily in restaurant management tasks.",tl2h:"ConsultantPlus",tl2:"Working with the legal and regulatory database.",tl3:"Hands-on experience.",tl4h:"English",tl4:"Reading financial texts and written communication within this level.",
+    w_k:"06 · Awards",w_h:"Research <span class=\"o\">& wins</span>",w_note:"Olympiads, conferences and research.",
+    o1d:"20 November 2025 · economics",o1t:"Winner's diploma, All-Russian olympiad “Engine of Progress: The Economic Challenge”",deg:"1st place",
+    o2d:"27 November 2025 · English",o2t:"Winner's diploma, international olympiad “Ghostly English Grammar: Trick-or-Treat”",deg2:"1st place",
+    c1d:"26 May 2026 · talk at an international conference",c1q:"“Regulating digital platforms: balancing innovation and consumer protection”",c1p:"2nd International research conference “Problems and Priorities of the Modern Economy”, Kursk branch of the Financial University. In-person.",
+    ph_cap:"Financial literacy outreach 🏅",c2d:"27.03.2025 · Perm",c2t:"Inter-university conference “Youth. Creativity. Progress”",c2p:"Section “Socio-economic development of Russia: past, present and future”.",
+    c3d:"2025 · Kursk",c3t:"Round table “Growth strategies: economic analysis as the key to success”",pp_d:"Research paper · supervisor O. V. Pshenichkova",pp_q:"“The role of economic analysis in modern effective business management”",
+    w_proof:"Diplomas, certificates and letters of thanks available on request.",
+    v_k:"07 · Community work",v_h:"Financial <span class=\"o\">literacy</span>",v1:"FINCentre volunteer centre",v1p:"Member of the financial literacy centre at the Kursk branch of the Financial University.",v1y:"Letter of thanks · 2025",
+    v2:"Game facilitator, Kursk Region Cup",v2p:"Communication battles within the All-Russian championship in financial literacy and entrepreneurship.",v2y:"Thanks from the Regional Ministry of Education · 2025, 2026",
+    v3:"4th Interregional volunteer forum",v3p:"Forum of financial literacy volunteers, Ryazan.",v3y:"Thanks from RIRO · 2025",v4:"Regional youth policy",v4p:"Letter of thanks from the Kursk Region Youth Policy Committee.",
+    k_k:"08 · Continuing education",k_h:"Always <span class=\"o\">learning</span>",k1:"Public and municipal administration",k2:"Procurement specialist",k3:"Fundamentals of financial literacy",k4:"Systems management and mentoring",
+    pp:"Professional retraining",pp2:"Professional retraining",pk:"Advanced training",pk2:"Advanced training",m3:"3 months",m2:"2 months",w2:"2 weeks",
+    ct_k:"09 · Contact",ct_h:"Let's <span class=\"o\">connect</span>",copy:"Copy",copy2:"Copy",tel:"Phone",rl1:"Kursk",rl2:"Moscow",rl3:"open to relocating",
+    xh1:"Period",xh2:"Item",xh3:"Amount, ₽",xr:"Revenue",xr2:"Revenue",xr3:"Revenue",xe:"Costs",xt:"Total",f1:"© 2026 Daria Tsukanova",f2:"Back to top ↑"
+  };
+  var RU={},nodes=document.querySelectorAll("[data-k]"),alts=document.querySelectorAll("[data-k-alt]");
+  nodes.forEach(function(n){RU[n.dataset.k]=n.hasAttribute("data-html")?n.innerHTML:n.textContent});
+  alts.forEach(function(n){RU[n.dataset.kAlt]=n.alt});
+  var formulas={ru:['=СУММЕСЛИ(B:B;"Выручка";C:C)','=ВПР(A2;Отчёт!A:D;4;0)','=ЕСЛИ(C3<0;"Риск";"ОК")'],en:['=SUMIF(B:B,"Revenue",C:C)','=XLOOKUP(A2,Report!A:A,Report!D:D)','=IF(C3<0,"Risk","OK")']};
+  var lang="ru";
+  function setLang(l){
+    lang=l;var d=l==="en"?EN:RU;
+    nodes.forEach(function(n){var v=d[n.dataset.k];if(v==null)return;if(n.hasAttribute("data-html"))n.innerHTML=v;else n.textContent=v.replace(/&amp;/g,"&")});
+    alts.forEach(function(n){var v=d[n.dataset.kAlt];if(v)n.alt=v});
+    document.documentElement.lang=l;document.documentElement.dataset.lang=l;
+    document.title=l==="en"?"Daria Tsukanova — Resume":"Дарья Цуканова — резюме";
+    document.getElementById("badge-text").textContent=l==="en"?"FINANCE • RISK • ANALYSIS • CONTROL • ":"ФИНАНСЫ • РИСКИ • АНАЛИЗ • КОНТРОЛЬ • ";
+    document.getElementById("lang-ru").setAttribute("aria-pressed",l==="ru");
+    document.getElementById("lang-en").setAttribute("aria-pressed",l==="en");
+    fillTickers(l);fi=0;document.getElementById("formula").textContent=formulas[l][0];
+    try{localStorage.setItem("dt-lang",l)}catch(e){}
+  }
+  document.getElementById("lang-ru").onclick=function(){setLang("ru")};
+  document.getElementById("lang-en").onclick=function(){setLang("en")};
+
+  /* formula typing (starts full, then cycles) */
+  var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches,fi=0,fEl=document.getElementById("formula");
+  function typeNext(){
+    if(reduce)return;
+    fi=(fi+1)%3;var s=formulas[lang][fi],k=0;fEl.textContent="";
+    var t=setInterval(function(){k++;fEl.textContent=s.slice(0,k);if(k>=s.length){clearInterval(t);setTimeout(typeNext,2600)}},55);
+  }
+  setTimeout(typeNext,3200);
+
+  var saved="ru";try{saved=localStorage.getItem("dt-lang")||"ru"}catch(e){}
+  if(location.hash==="#en")saved="en";
+  setLang(saved==="en"?"en":"ru");
+
+  /* header + active nav */
+  var hdr=document.querySelector("header");
+  addEventListener("scroll",function(){hdr.classList.toggle("scrolled",scrollY>10)},{passive:true});
+  var links=document.querySelectorAll(".links a");
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id)})}})},{rootMargin:"-45% 0px -50% 0px"});
+    ["about","skills","experience","awards","contact"].forEach(function(id){var s=document.getElementById(id);if(s)io.observe(s)});
+  }
+
+  /* magnetic buttons + tilt (fine pointers only) */
+  if(!reduce&&matchMedia("(pointer:fine)").matches){
+    document.querySelectorAll(".magnet").forEach(function(b){
+      b.addEventListener("pointermove",function(e){var r=b.getBoundingClientRect();b.style.transform="translate("+((e.clientX-r.left-r.width/2)*.25)+"px,"+((e.clientY-r.top-r.height/2)*.35)+"px)"});
+      b.addEventListener("pointerleave",function(){b.style.transform=""});
+    });
+    var p=document.querySelector(".portrait");
+    p.addEventListener("pointermove",function(e){var r=p.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;p.style.transform="perspective(900px) rotateY("+(x*8)+"deg) rotateX("+(-y*8)+"deg)"});
+    p.addEventListener("pointerleave",function(){p.style.transform=""});
+    p.style.transition="transform .4s cubic-bezier(.2,.8,.2,1)";
+  }
+
+  /* copy */
+  var toast=document.getElementById("toast"),tt;
+  function show(m){toast.textContent=m;toast.classList.add("show");clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove("show")},1800)}
+  document.querySelectorAll("[data-copy]").forEach(function(b){
+    b.addEventListener("click",function(){
+      var v=b.dataset.copy;
+      try{navigator.clipboard.writeText(v).then(function(){show(lang==="en"?"Copied: "+v:"Скопировано: "+v)},function(){show(v)})}catch(e){show(v)}
+    });
+  });
+})();
+</script>
+</body>
+</html>
